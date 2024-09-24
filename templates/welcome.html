@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
+</head>
+<body>
+    <div class="welcome-container">
+        <h2>It's admin space! <br> </h2> 
+        <h1>Welcome, {{ username }} to {{ workspace_name }} workspace!</h1><br>
+
+        <h3>User Details:</h3><br>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Workspace Name</th>
+                    <th>Total Login Count</th>
+                    <th>Last Login</th>
+                    <th>Is Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user['username'] }}</td>
+                    <td>{{ user['workspace_name'] }}</td>
+                    <td>{{ user['total_login_count'] }}</td>
+                    <td>{{ user['last_login'] }}</td>
+                    <!-- <td>{{ "Active" if user['isActive'] else "Inactive" }}</td> -->
+                    <td >{{ user['isActive'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="inside-div">
+            <form action="{{ url_for('logout') }}" method="POST">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

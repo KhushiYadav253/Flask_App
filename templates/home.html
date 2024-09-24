@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<home>
-  <head>
-    <title>
-      Doll Kim
-    </title>
-  </head>
-  <body>
-    Hey I am Doll KIm, I am a student at the University of Texas at Austin. I am currently studying Computer Science.
-  </body>
-</home>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-form" action="{{ url_for('welcome') }}" method="POST">
+            <h2>Login</h2>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
